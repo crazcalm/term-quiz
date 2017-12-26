@@ -52,7 +52,7 @@ func TestShuffle(t *testing.T) {
 
 			//These cases that do not shuffle have already passed.
 			//They will stop here.
-			if len(test.Answers.Answers) < 2 {
+			if test.ExpectError && err != nil {
 				return
 			}
 

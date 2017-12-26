@@ -41,9 +41,8 @@ func (as Answers) Shuffle() error {
 		return fmt.Errorf("Not enough Answers to shuffle")
 	}
 
-	var swapIndex int
 	for i := range as.Answers {
-		swapIndex = rand.Intn(numOfAnswers - 1)
+		swapIndex := rand.Intn(numOfAnswers - 1)
 		tempt := as.Answers[i]
 		as.Answers[i] = as.Answers[swapIndex]
 		as.Answers[swapIndex] = tempt
