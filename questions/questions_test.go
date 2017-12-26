@@ -12,9 +12,13 @@ func TestCorrectAnswer(t *testing.T) {
 	a3 := &answers.Answer{"3", false}
 	a4 := &answers.Answer{"4", true}
 
-	as := answers.Answers{[]*answers.Answer{a1, a2, a3, a4}}
+	as1 := answers.Answers{[]*answers.Answer{a1, a2, a3, a4}}
+	as2 := answers.Answers{[]*answers.Answer{a1, a2, a3}}
+	as3 := answers.Answers{[]*answers.Answer{}}
 
-	q1 := Question{"question", as, "none"}
+	q1 := Question{"q1", as1, "none"}
+	q2 := Question{"q2", as2, "none"}
+	q3 := Question{"q3", as3, "none"}
 
 	tests := []struct {
 		Question    Question
@@ -22,6 +26,8 @@ func TestCorrectAnswer(t *testing.T) {
 		ExpectError bool
 	}{
 		{q1, a4, false},
+		{q2, a4, true},
+		{q3, a4, true},
 	}
 
 	for _, test := range tests {
