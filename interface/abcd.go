@@ -25,7 +25,7 @@ const (
 
 //QuestionFrame -- Gui component that holds the question frame
 type QuestionFrame struct {
-	name string
+	name  string
 	title string
 }
 
@@ -35,9 +35,9 @@ func NewQuestionFrame(name, title string) *QuestionFrame {
 }
 
 //Layout -- Tells gocui.Gui how to display this compenent
-func (qf *QuestionFrame) Layout (g *gocui.Gui) error {
+func (qf *QuestionFrame) Layout(g *gocui.Gui) error {
 	maxX, maxY := g.Size()
-	v, err := g.SetView(qf.name, -1, -1, maxX, int(0.5 * float32(maxY)))
+	v, err := g.SetView(qf.name, -1, -1, maxX, int(0.5*float32(maxY)))
 	if err != nil {
 		if err != gocui.ErrUnknownView {
 			return err
@@ -49,9 +49,9 @@ func (qf *QuestionFrame) Layout (g *gocui.Gui) error {
 
 //Question -- Gui component that holds the question
 type Question struct {
-	name string
+	name  string
 	title string
-	body string // will replace with questions.Question
+	body  string // will replace with questions.Question
 }
 
 //NewQuestion -- creates new question gui component
@@ -65,8 +65,8 @@ func (q *Question) location(g *gocui.Gui) (x, y, w, h int) {
 	y = int(0.1 * float32(maxY))
 	w = int(0.8 * float32(maxX))
 	h = int(0.4 * float32(maxY))
-	return 
-} 
+	return
+}
 
 //Layout -- Tells gocui.Gui how to display this compenent
 func (q *Question) Layout(g *gocui.Gui) error {
@@ -84,9 +84,9 @@ func (q *Question) Layout(g *gocui.Gui) error {
 
 //Answer -- Gui component that holds a Answer
 type Answer struct {
-	name string
+	name  string
 	title string
-	body string // will replace with answers.Answer
+	body  string // will replace with answers.Answer
 }
 
 //NewAnswer -- creates a new Answer gui component
@@ -94,9 +94,9 @@ func NewAnswer(name, title string, body string) *Answer {
 	return &Answer{name: name, title: title, body: body}
 }
 
-func (a *Answer) location(title string, g *gocui.Gui) (x, y, w, h int){
+func (a *Answer) location(title string, g *gocui.Gui) (x, y, w, h int) {
 	maxX, maxY := g.Size()
-	if strings.EqualFold(title, BoxA){
+	if strings.EqualFold(title, BoxA) {
 		x = -1
 		y = int(0.5 * float32(maxY))
 		w = int(0.5 * float32(maxX))
@@ -109,7 +109,7 @@ func (a *Answer) location(title string, g *gocui.Gui) (x, y, w, h int){
 		w = maxX
 		h = int(0.73 * float32(maxY))
 		return
-		
+
 	} else if strings.EqualFold(title, BoxC) {
 		x = -1
 		y = int(0.77 * float32(maxY))
@@ -121,11 +121,23 @@ func (a *Answer) location(title string, g *gocui.Gui) (x, y, w, h int){
 		y = int(0.77 * float32(maxY))
 		w = maxX
 		h = maxY
-		return 
+		return
+	} else if strings.EqualFold(title, BoxTrue) {
+		x = int(0.05 * float32(maxX))
+		y = int(0.6 * float32(maxY))
+		w = int(0.45 * float32(maxX))
+		h = int(0.9 * float32(maxY))
+		return
+
+	} else if strings.EqualFold(title, BoxFalse) {
+		x = int(0.55 * float32(maxX))
+		y = int(0.6 * float32(maxY))
+		w = int(0.95 * float32(maxX))
+		h = int(0.9 * float32(maxY))
+		return
 	}
 
-	fmt.Printf("%d, %d, %d, %d, %d, %d\n", x, y, w, h, maxX, maxY)
-	return -1, -1, maxX, maxY
+	return
 }
 
 //Layout -- Tells gocui.Gui how to display this compenent
