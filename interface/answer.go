@@ -3,6 +3,7 @@ package gui
 import (
 	"fmt"
 	"github.com/jroimartin/gocui"
+	"log"
 	"strings"
 )
 
@@ -24,7 +25,7 @@ func (a *Answer) location(title string, g *gocui.Gui) (x, y, w, h int) {
 		x = -1
 		y = int(0.5 * float32(maxY))
 		w = int(0.5 * float32(maxX))
-		h = int(0.73 * float32(maxX))
+		h = int(0.73 * float32(maxY))
 		return
 
 	} else if strings.EqualFold(title, BoxB) {
@@ -78,12 +79,21 @@ func (a *Answer) Layout(g *gocui.Gui) error {
 			return err
 		}
 		v.Title = a.title
-		v.Highlight = true
 		v.Wrap = true
+
+		//Make sure the fill in the blank is editable
 		if strings.EqualFold(a.title, BoxBlank) {
 			v.Editable = true
 		} else {
 			fmt.Fprint(v, a.body)
+		}
+
+		//Make sure the first answer is on top
+		if strings.EqualFold(a.title, BoxA) || strings.EqualFold(a.title, BoxTrue) || strings.EqualFold(a.title, BoxBlank) {
+			_, err := setCurrentViewOnTop(g, a.name)
+			if err != nil {
+				log.Fatal(err)
+			}
 		}
 	}
 	return nil
