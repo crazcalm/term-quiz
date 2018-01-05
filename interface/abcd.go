@@ -20,7 +20,7 @@ const (
 	//BoxFalse -- title for question box false
 	BoxFalse = "False"
 	//BoxBlank -- title for question box fill in the blank
-	BoxBlank = "Write"
+	BoxBlank = "Write Your Answer"
 )
 
 //QuestionFrame -- Gui component that holds the question frame
@@ -135,6 +135,11 @@ func (a *Answer) location(title string, g *gocui.Gui) (x, y, w, h int) {
 		w = int(0.95 * float32(maxX))
 		h = int(0.9 * float32(maxY))
 		return
+	} else if strings.EqualFold(title, BoxBlank) {
+		x = int(0.05 * float32(maxX))
+		y = int(0.6 * float32(maxY))
+		w = int(0.95 * float32(maxX))
+		h = int(0.9 * float32(maxY))
 	}
 
 	return
@@ -151,7 +156,11 @@ func (a *Answer) Layout(g *gocui.Gui) error {
 		v.Title = a.title
 		v.Highlight = true
 		v.Wrap = true
-		fmt.Fprint(v, a.body)
+		if strings.EqualFold(a.title, BoxBlank) {
+			v.Editable = true
+		} else {
+			fmt.Fprint(v, a.body)
+		}
 	}
 	return nil
 }
