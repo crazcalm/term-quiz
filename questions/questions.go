@@ -98,37 +98,38 @@ func NewQuestions() Questions {
 }
 
 //CreateQuestions -- used to create questions
-func (qs Questions) CreateQuestions(files ...string) (err error) {
+func CreateQuestions(qs Questions, files ...string) (Questions, error) {
 	var data [][]string
+	var err error
 
 	//Get data From files
 	for _, file := range files {
 		data, err = csv.Read(file, data)
 		if err != nil {
-			return
+			return qs, err
 		}
 	}
 
-	for index, qData := range data {
+	for _, qData := range data {
 		l := len(qData)
 		as := answers.Answers{[]*answers.Answer{}}
 
 		if l == 6 {
-			as.Answers[0] = &answers.Answer{qData[1], true}
-			as.Answers[1] = &answers.Answer{qData[2], false}
-			as.Answers[2] = &answers.Answer{qData[3], false}
-			as.Answers[3] = &answers.Answer{qData[4], false}
+			as.Answers = append(as.Answers, &answers.Answer{qData[1], true})
+			as.Answers = append(as.Answers, &answers.Answer{qData[2], false})
+			as.Answers = append(as.Answers, &answers.Answer{qData[3], false})
+			as.Answers = append(as.Answers, &answers.Answer{qData[4], false})
 		} else if l == 4 {
-			as.Answers[0] = &answers.Answer{qData[1], true}
-			as.Answers[1] = &answers.Answer{qData[2], false}
+			as.Answers = append(as.Answers, &answers.Answer{qData[1], true})
+			as.Answers = append(as.Answers, &answers.Answer{qData[2], false})
 		} else if l == 3 {
-			as.Answers[0] = &answers.Answer{qData[1], false}
+			as.Answers = append(as.Answers, &answers.Answer{qData[1], false})
 		}
 
 		//Shuffle the answers
 		as.Shuffle()
 
-		qs.Questions[index] = &Question{qData[0], as, qData[l-1]}
+		qs.Questions = append(qs.Questions, &Question{qData[0], as, qData[l-1]})
 	}
-	return nil
+	return qs, nil
 }

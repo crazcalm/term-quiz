@@ -1,12 +1,11 @@
 package quiz
 
 import (
-	"log"
-	"github.com/jroimartin/gocui"
 	"github.com/crazcalm/term-quiz/interface"
 	"github.com/crazcalm/term-quiz/questions"
 	"github.com/crazcalm/term-quiz/user"
-	"github.com/crazcalm/term-quiz/answers"
+	"github.com/jroimartin/gocui"
+	"log"
 )
 
 var (
@@ -17,14 +16,16 @@ var (
 )
 
 //ABCDInit -- Initializes the ABCD gui interface
-func ABCDInit(g *gocui.Gui, q *questions.Question, as answers.Answers, count string) (err error){
+func ABCDInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	//Highlight the selected view and make it green
 	g.Highlight = true
 	g.SelFgColor = gocui.ColorGreen
 
+	as := q.Answers
+
 	//Add content to gui
 	questionFrame := gui.NewQuestionFrame("questionFrame", count)
-	question := gui.NewQuestion("question", "question", q.Question)	
+	question := gui.NewQuestion("question", "question", q.Question)
 	answerA := gui.NewAnswer(gui.BoxA, gui.BoxA, as.Answers[0].Answer)
 	answerB := gui.NewAnswer(gui.BoxB, gui.BoxB, as.Answers[1].Answer)
 	answerC := gui.NewAnswer(gui.BoxC, gui.BoxC, as.Answers[2].Answer)
