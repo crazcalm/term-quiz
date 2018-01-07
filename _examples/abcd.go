@@ -8,10 +8,6 @@ import (
 	"path/filepath"
 )
 
-var (
-	q = questions.NewQuestions()
-)
-
 func main() {
 	//Get gui driver
 	g, err := gocui.NewGui(gocui.OutputNormal)
@@ -21,13 +17,13 @@ func main() {
 	defer g.Close()
 
 	//Need to create questions
-	q, err := questions.CreateQuestions(q, filepath.Join("test_data", "abcd.csv"))
+	quiz.Questions, err = questions.CreateQuestions(quiz.Questions, filepath.Join("test_data", "abcd.csv"))
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	//Need to initialize screen
-	quiz.ABCDInit(g, q.Questions[0], "1")
+	quiz.Init(g)
 
 	//Run main loop
 	if err := g.MainLoop(); err != nil && err != gocui.ErrQuit {

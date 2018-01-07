@@ -24,8 +24,8 @@ func ABCDInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	as := q.Answers
 
 	//Add content to gui
-	questionFrame := gui.NewQuestionFrame("questionFrame", count)
-	question := gui.NewQuestion("question", "question", q.Question)
+	questionFrame := gui.NewQuestionFrame("questionFrame")
+	question := gui.NewQuestion("question", count, q.Question)
 	answerA := gui.NewAnswer(gui.BoxA, gui.BoxA, as.Answers[0].Answer)
 	answerB := gui.NewAnswer(gui.BoxB, gui.BoxB, as.Answers[1].Answer)
 	answerC := gui.NewAnswer(gui.BoxC, gui.BoxC, as.Answers[2].Answer)

@@ -275,15 +275,33 @@ func TestCurrent(t *testing.T) {
 	tests := []struct {
 		Questions Questions
 		Expected  *Question
+		ExpectErr bool
 	}{
-		{Questions{[]*Question{q1, q2, q3, q4}, 0}, q1},
-		{Questions{[]*Question{q1, q2, q3, q4}, 1}, q2},
-		{Questions{[]*Question{q1, q2, q3, q4}, 2}, q3},
-		{Questions{[]*Question{q1, q2, q3, q4}, 3}, q4},
+		{Questions{[]*Question{q1, q2, q3, q4}, 0}, q1, false},
+		{Questions{[]*Question{q1, q2, q3, q4}, 1}, q2, false},
+		{Questions{[]*Question{q1, q2, q3, q4}, 2}, q3, false},
+		{Questions{[]*Question{q1, q2, q3, q4}, 3}, q4, false},
+		//{Questions{[]*Question{}}, q1, true}, //Having trouble testing this case
 	}
 
 	for _, test := range tests {
-		result := test.Questions.Current()
+		result, err := test.Questions.Current()
+
+		if err != nil && !test.ExpectErr {
+			t.Errorf("Unexpected err: %s", err.Error())
+		}
+
+		if err == nil && test.ExpectErr {
+			t.Errorf("Was expecting an error, but did not receive one")
+		}
+
+		//I was expecting an error
+		//I got and error
+		//Test case passed
+		if err != nil && test.ExpectErr {
+			return
+		}
+
 		if !strings.EqualFold(test.Expected.Question, result.Question) {
 			t.Errorf("I expected %s, but got %s", test.Expected.Question, result.Question)
 		}

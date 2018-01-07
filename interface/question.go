@@ -35,6 +35,7 @@ func (q *Question) Layout(g *gocui.Gui) error {
 			return err
 		}
 		v.Wrap = true
+		v.Title = q.title
 		fmt.Fprint(v, q.body)
 	}
 	return nil

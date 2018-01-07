@@ -17,8 +17,8 @@ func TFInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	g.SelFgColor = gocui.ColorGreen
 
 	//Add content to gui
-	questionFrame := gui.NewQuestionFrame("questionFrame", count)
-	question := gui.NewQuestion("question", "question", q.Question)
+	questionFrame := gui.NewQuestionFrame("questionFrame")
+	question := gui.NewQuestion("question", count, q.Question)
 	answerTrue := gui.NewAnswer(gui.BoxTrue, gui.BoxTrue, as.Answers[0].Answer)
 	answerFalse := gui.NewAnswer(gui.BoxFalse, gui.BoxFalse, as.Answers[1].Answer)
 

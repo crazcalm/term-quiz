@@ -54,8 +54,11 @@ func (qs Questions) Shuffle() error {
 }
 
 //Current -- returns the current question
-func (qs Questions) Current() *Question {
-	return qs.Questions[qs.index]
+func (qs Questions) Current() (*Question, error) {
+	if len(qs.Questions) == 0 {
+		return &Question{"", answers.Answers{[]*answers.Answer{}}, ""}, fmt.Errorf("There are no questions")
+	}
+	return qs.Questions[qs.index], nil
 }
 
 //NextExist -- Checks to see if there is a next question
@@ -72,7 +75,12 @@ func (qs Questions) Next() (*Question, error) {
 	}
 
 	qs.index++
-	return qs.Current(), nil
+
+	q, err := qs.Current()
+	if err != nil {
+		return q, err
+	}
+	return q, nil
 }
 
 //PreviousExist -- Check to see if there is a previous question
@@ -89,7 +97,12 @@ func (qs Questions) Previous() (*Question, error) {
 	}
 
 	qs.index--
-	return qs.Current(), nil
+
+	q, err := qs.Current()
+	if err != nil {
+		return q, err
+	}
+	return q, nil
 }
 
 //NewQuestions -- returns an empty Question container

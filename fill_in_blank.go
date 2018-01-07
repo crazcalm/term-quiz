@@ -17,8 +17,8 @@ func FBInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	g.SelFgColor = gocui.ColorGreen
 
 	//Add content to gui
-	questionFrame := gui.NewQuestionFrame("questionFrame", count)
-	question := gui.NewQuestion("question", "question", q.Question)
+	questionFrame := gui.NewQuestionFrame("questionFrame")
+	question := gui.NewQuestion("question", count, q.Question)
 	answerBlank := gui.NewAnswer(gui.BoxBlank, gui.BoxBlank, as.Answers[0].Answer)
 
 	g.SetManager(questionFrame, question, answerBlank)
