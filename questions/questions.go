@@ -3,6 +3,7 @@ package questions
 import (
 	"fmt"
 	"github.com/crazcalm/term-quiz/answers"
+	"github.com/crazcalm/term-quiz/csv"
 	"math/rand"
 	"time"
 )
@@ -89,4 +90,45 @@ func (qs Questions) Previous() (*Question, error) {
 
 	qs.index--
 	return qs.Current(), nil
+}
+
+//NewQuestions -- returns an empty Question container
+func NewQuestions() Questions {
+	return Questions{[]*Question{}, 0}
+}
+
+//CreateQuestions -- used to create questions
+func (qs Questions) CreateQuestions(files ...string) (err error) {
+	var data [][]string
+
+	//Get data From files
+	for _, file := range files {
+		data, err = csv.Read(file, data)
+		if err != nil {
+			return
+		}
+	}
+
+	for index, qData := range data {
+		l := len(qData)
+		as := answers.Answers{[]*answers.Answer{}}
+
+		if l == 6 {
+			as.Answers[0] = &answers.Answer{qData[1], true}
+			as.Answers[1] = &answers.Answer{qData[2], false}
+			as.Answers[2] = &answers.Answer{qData[3], false}
+			as.Answers[3] = &answers.Answer{qData[4], false}
+		} else if l == 4 {
+			as.Answers[0] = &answers.Answer{qData[1], true}
+			as.Answers[1] = &answers.Answer{qData[2], false}
+		} else if l == 3 {
+			as.Answers[0] = &answers.Answer{qData[1], false}
+		}
+
+		//Shuffle the answers
+		as.Shuffle()
+
+		qs.Questions[index] = &Question{qData[0], as, qData[l-1]}
+	}
+	return nil
 }

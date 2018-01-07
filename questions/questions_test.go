@@ -2,6 +2,7 @@ package questions
 
 import (
 	"github.com/crazcalm/term-quiz/answers"
+	"path/filepath"
 	"strings"
 	"testing"
 )
@@ -285,6 +286,64 @@ func TestCurrent(t *testing.T) {
 		result := test.Questions.Current()
 		if !strings.EqualFold(test.Expected.Question, result.Question) {
 			t.Errorf("I expected %s, but got %s", test.Expected.Question, result.Question)
+		}
+	}
+}
+
+func TestNewQuestions(t *testing.T) {
+	qs := NewQuestions()
+
+	if len(qs.Questions) != 0 {
+		t.Errorf("I was not expecting any questions to exist")
+	}
+}
+
+func TestCreateQuestions(t *testing.T) {
+	qs := NewQuestions()
+
+	abcdPath := filepath.Join("test_data", "abcd.csv")
+	trueFalsePath := filepath.Join("test_data", "true_false.csv")
+	fillInBlankPath := filepath.Join("test_data", "fill_in_the_blank.csv")
+	errorPath := filepath.Join("test_data", "error.csv")
+
+	tests := []struct {
+		Files     []string
+		ExpectErr bool
+		Len       int
+	}{
+		{[]string{""}, true, 0},
+		{[]string{abcdPath, trueFalsePath, fillInBlankPath}, false, 9},
+		{[]string{abcdPath, errorPath}, true, 3},
+	}
+
+	for _, test := range tests {
+		l := len(test.Files)
+		var err error
+		if l == 1 {
+			err = qs.CreateQuestions(test.Files[0])
+		} else if l == 2 {
+			err = qs.CreateQuestions(test.Files[0], test.Files[1])
+		} else if l == 3 {
+			err = qs.CreateQuestions(test.Files[0], test.Files[1], test.Files[2])
+		}
+
+		if err != nil && !test.ExpectErr {
+			t.Errorf("Got an unexpected err: %s", err.Error())
+		}
+
+		if err == nil && test.ExpectErr {
+			t.Errorf("Was expected an error, but did not receive one")
+		}
+
+		//I was expecting an error
+		//I got an error
+		//This test case is done
+		if err != nil && test.ExpectErr {
+			return
+		}
+
+		if len(qs.Questions) != test.Len {
+			t.Errorf("Expected %d questions, but got %d", test.Len, len(qs.Questions))
 		}
 	}
 }
