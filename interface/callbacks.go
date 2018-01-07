@@ -85,54 +85,6 @@ func CursorUp(g *gocui.Gui, v *gocui.View) error {
 	return nil
 }
 
-//SelectAnswer -- Callback used to select and answer in the ABCDLayout
-func SelectAnswer(g *gocui.Gui, v *gocui.View) error {
-	fmt.Fprintln(v, "Selected")
-
-	cQuestion := currentQuestion()
-	selectedAnswer := answersToBoxViews[v.Name()]
-
-	a := UserAnswer{
-		v.Name(),
-		&cQuestion,
-		&selectedAnswer,
-	}
-
-	//User answers
-	userAnswers = append(userAnswers, a)
-
-	if !nextQuestionExist() || len(userAnswers) >= QuestionsLimit {
-		g.SetManagerFunc(endScreenLayout)
-		err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, Quit)
-		if err != nil {
-			log.Panicln(err)
-			return err
-		}
-		err = g.SetKeybinding("", gocui.KeyArrowDown, gocui.ModNone, CursorDown)
-		if err != nil {
-			log.Panicln(err)
-			return err
-		}
-
-		err = g.SetKeybinding("", gocui.KeyArrowUp, gocui.ModNone, CursorUp)
-		if err != nil {
-			log.Panicln(err)
-			return err
-		}
-
-		return nil
-	}
-	question, err := nextQuestion()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	//Write Question and Answers to layout
-	writeInfoToLayout(g, question)
-
-	return nil
-}
-
 func writeInfoToLayout(g *gocui.Gui, q Question) {
 	//Write question
 	questionBox := getQuestionBoxView(g)

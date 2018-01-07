@@ -32,7 +32,7 @@ func (q Question) CorrectAnswer() (*answers.Answer, error) {
 //Questions -- The container that holds the questions
 type Questions struct {
 	Questions []*Question
-	index     int
+	Index     int
 }
 
 //Shuffle -- In place Shuffle of the questions
@@ -58,12 +58,12 @@ func (qs Questions) Current() (*Question, error) {
 	if len(qs.Questions) == 0 {
 		return &Question{"", answers.Answers{[]*answers.Answer{}}, ""}, fmt.Errorf("There are no questions")
 	}
-	return qs.Questions[qs.index], nil
+	return qs.Questions[qs.Index], nil
 }
 
 //NextExist -- Checks to see if there is a next question
 func (qs Questions) NextExist() bool {
-	return qs.index < len(qs.Questions)-1
+	return qs.Index < len(qs.Questions)-1
 }
 
 //Next -- Moves index pointer to the next question
@@ -74,7 +74,7 @@ func (qs Questions) Next() (*Question, error) {
 		return q, fmt.Errorf("There is no next question")
 	}
 
-	qs.index++
+	qs.Index++
 
 	q, err := qs.Current()
 	if err != nil {
@@ -85,7 +85,7 @@ func (qs Questions) Next() (*Question, error) {
 
 //PreviousExist -- Check to see if there is a previous question
 func (qs Questions) PreviousExist() bool {
-	return qs.index > 0
+	return qs.Index > 0
 }
 
 //Previous -- movies index pointer to the previous question
@@ -96,7 +96,7 @@ func (qs Questions) Previous() (*Question, error) {
 		return q, fmt.Errorf("There is no previous question")
 	}
 
-	qs.index--
+	qs.Index--
 
 	q, err := qs.Current()
 	if err != nil {

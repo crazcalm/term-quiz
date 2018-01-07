@@ -36,5 +36,6 @@ func Init(g *gocui.Gui) (err error) {
 			return err
 		}
 	}
+
 	return nil
 }

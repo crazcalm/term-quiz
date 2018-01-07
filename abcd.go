@@ -41,5 +41,9 @@ func ABCDInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	if err := g.SetKeybinding("", gocui.KeyTab, gocui.ModNone, gui.ABCDNextView); err != nil {
 		log.Panicln(err)
 	}
+
+	if err := g.SetKeybinding("", gocui.KeyEnter, gocui.ModNone, SelectAnswer); err != nil {
+		log.Panicln(err)
+	}
 	return nil
 }
