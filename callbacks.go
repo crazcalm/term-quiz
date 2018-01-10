@@ -32,9 +32,12 @@ func SelectAnswer(g *gocui.Gui, v *gocui.View) error {
 	//User answers
 	UserAnswers[strconv.Itoa(len(UserAnswers))] = &a
 
-	//After all that work, I still have to manually increment
-	//the questions...
-	Questions.Index++
+	//Check to see if another question exists
+	if Questions.NextExist() {
+		//After all that work, I still have to manually increment
+		//the questions...
+		Questions.Index++
+	}
 
 	//Next Screen? I am not sure if this is going to work...
 	err = Init(g)
