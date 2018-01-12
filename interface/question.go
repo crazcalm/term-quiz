@@ -9,7 +9,7 @@ import (
 type Question struct {
 	name  string
 	title string
-	body  string // will replace with questions.Question
+	body  string
 }
 
 //NewQuestion -- creates new question gui component

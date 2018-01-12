@@ -15,4 +15,12 @@ const (
 	BoxFalse = "False"
 	//BoxBlank -- title for question box fill in the blank
 	BoxBlank = "Write Your Answer"
+	//Score -- name of the score box
+	Score = "score"
+	//Explain -- name of the Explaination box
+	Explain = "explain"
+	//Right -- What the user sees when they are right
+	Right = "You were RIGHT!"
+	//Wrong -- what the user sees when they are wrong
+	Wrong = "You were WRONG!"
 )
