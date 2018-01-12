@@ -15,8 +15,8 @@ const (
 	BoxFalse = "False"
 	//BoxBlank -- title for question box fill in the blank
 	BoxBlank = "Write Your Answer"
-	//Score -- name of the score box
-	Score = "score"
+	//ScoreName -- name of the score box
+	ScoreName = "score"
 	//Explain -- name of the Explaination box
 	Explain = "explain"
 	//Right -- What the user sees when they are right

@@ -17,10 +17,10 @@ func main() {
 	g.Highlight = true
 	g.SelFgColor = gocui.ColorGreen
 
-	score := gui.NewScore(gui.Score, "11/12", "4")
-	question := gui.NewExplaination(gui.Explain, gui.Right, "question string", "Answer string", "explaination string")
+	score := gui.NewScore(gui.ScoreName, "11/12", "4")
+	explain := gui.NewExplaination(gui.Explain, gui.Right, "question string", "Answer string", "explaination string")
 
-	g.SetManager(score, question)
+	g.SetManager(score, explain)
 
 	if err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, gui.Quit); err != nil {
 		log.Panicln(err)
