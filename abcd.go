@@ -13,6 +13,10 @@ var (
 	Questions = questions.NewQuestions()
 	//UserAnswers -- Global container for UserAnswers
 	UserAnswers = user.Answers{}
+	//QuestionLimit -- Limits the number of questions that are shown to the user
+	QuestionLimit = 10
+	//CurrentUserAnswer -- index for user answers
+	CurrentUserAnswer = 1
 )
 
 //ABCDInit -- Initializes the ABCD gui interface

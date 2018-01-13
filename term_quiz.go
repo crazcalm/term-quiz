@@ -8,9 +8,17 @@ import (
 //Init -- The Init function decides which sub Init funtion should be called
 //ABCDInint, TFInit or FBInit
 func Init(g *gocui.Gui) (err error) {
-	//Need to check if we have reached the question limit
-	//or if we have run out of question.
-	//TODO: add end screen
+	//Have we reached the question limit?
+	if Questions.Index >= QuestionLimit - 1 {
+		//Need to call End Screen
+		return nil
+	}
+
+	//Have we ran out of questions?
+	if Questions.Index >= len(Questions.Questions) - 1 {
+		//Need to call End Screen
+		return nil
+	}
 
 	//Get current question
 	q, err := Questions.Current()

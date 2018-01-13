@@ -23,7 +23,10 @@ func main() {
 	}
 
 	//Need to initialize screen
-	quiz.Init(g)
+	err = quiz.Init(g)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	//Run main loop
 	if err := g.MainLoop(); err != nil && err != gocui.ErrQuit {
