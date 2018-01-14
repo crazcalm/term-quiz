@@ -29,21 +29,30 @@ func SelectAnswer(g *gocui.Gui, v *gocui.View) error {
 		selectedAnswer,
 	}
 
-	//User answers
-	UserAnswers[strconv.Itoa(len(UserAnswers))] = &a
+	//User answers -- The plus one is so the count starts at 1
+	UserAnswers[strconv.Itoa(len(UserAnswers)+1)] = &a
 
-	//Check to see if another question exists
-	if Questions.NextExist() {
-		//After all that work, I still have to manually increment
-		//the questions...
-		Questions.Index++
-	}
+	//Increment the questions index!
+	Questions.Index++
 
-	//Next Screen? I am not sure if this is going to work...
+	//Next Screen
 	err = Init(g)
 	if err != nil {
 		return err
 	}
 
+	return nil
+}
+
+//NextUserAnswer -- View next user answer
+func NextUserAnswer(g *gocui.Gui, v *gocui.View) error {
+	//Increment count
+	CurrentUserAnswer++
+
+	//Next Screen
+	err := Init(g)
+	if err != nil {
+		return err
+	}
 	return nil
 }
