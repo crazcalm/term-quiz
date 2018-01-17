@@ -10,7 +10,7 @@ import (
 //ABCDInint, TFInit or FBInit
 func Init(g *gocui.Gui) (err error) {
 	//Have we reached the question limit?
-	if Questions.Index >= QuestionLimit-1 {
+	if Questions.Index >= QuestionLimit {
 		//Need to call End Screen
 		ESInit(g, UserAnswers)
 		return nil
