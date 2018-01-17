@@ -19,9 +19,9 @@ func TFInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	//Add content to gui
 	questionFrame := gui.NewQuestionFrame("questionFrame")
 	question := gui.NewQuestion("question", count, q.Question)
-	answerTrue := gui.NewAnswer(gui.BoxTrue, gui.BoxTrue, as.Answers[0].Answer)
+	answerTrue := gui.NewAnswer(gui.BoxTrue, as.Answers[0].Answer, "")
 	AnswersToBoxViews[gui.BoxTrue] = as.Answers[0]
-	answerFalse := gui.NewAnswer(gui.BoxFalse, gui.BoxFalse, as.Answers[1].Answer)
+	answerFalse := gui.NewAnswer(gui.BoxFalse, as.Answers[1].Answer, "")
 	AnswersToBoxViews[gui.BoxFalse] = as.Answers[1]
 
 	g.SetManager(questionFrame, question, answerTrue, answerFalse)
