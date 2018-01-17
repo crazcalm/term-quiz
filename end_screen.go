@@ -43,13 +43,19 @@ func ESInit(g *gocui.Gui, u user.Answers) (err error) {
 		correct = gui.Wrong
 	}
 
+	//Get the correct answer
+	correctAnswer, err := currentUserAnswer.Question.CorrectAnswer()
+	if err != nil {
+		log.Panicln(err)
+	}
+
 	//Highlight the selected view and make it green
 	g.Highlight = true
 	g.SelFgColor = gocui.ColorGreen
 
 	//create widgets
 	scoreWidget := gui.NewScore(gui.ScoreName, score, questionCount)
-	explainWidget := gui.NewExplaination(gui.Explain, correct, currentUserAnswer.Question.Question, currentUserAnswer.Answer.Answer, currentUserAnswer.Question.Explaination)
+	explainWidget := gui.NewExplaination(gui.Explain, correct, currentUserAnswer.Question.Question, correctAnswer.Answer, currentUserAnswer.Question.Explaination)
 
 	g.SetManager(scoreWidget, explainWidget)
 
