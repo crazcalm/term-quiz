@@ -28,6 +28,8 @@ func Read(path string, records [][]string) ([][]string, error) {
 	r := csv.NewReader(file)
 	r.LazyQuotes = true // Needed to except the existence of quotes within the statement fields
 
+	//counter used to skip the first record
+	count := 0
 	for {
 		record, err := r.Read()
 		if err == io.EOF {
@@ -36,7 +38,10 @@ func Read(path string, records [][]string) ([][]string, error) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		records = append(records, record)
+		if count != 0 {
+			records = append(records, record)
+		}
+		count++
 	}
 
 	return records, nil
