@@ -22,6 +22,12 @@ func main() {
 		log.Fatal(err)
 	}
 
+	//Shuffle Questions
+	err = quiz.Questions.Shuffle()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	//Need to initialize screen
 	quiz.Init(g)
 
