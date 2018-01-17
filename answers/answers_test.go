@@ -76,10 +76,14 @@ func TestCorrectAnswer(t *testing.T) {
 	answer4 := &Answer{"4", true}
 	answerTrue := &Answer{"真的", true}
 	answerFalse := &Answer{"假的", false}
+	answerBlank1 := &Answer{"hi", true}
+	answerBlank2 := &Answer{"hi", false}
 
 	answers1 := Answers{[]*Answer{answer1, answer2, answer3, answer4}}
 	answers2 := Answers{[]*Answer{answer1, answer2, answer3}}
 	answers3 := Answers{[]*Answer{answerFalse, answerTrue}}
+	answers4 := Answers{[]*Answer{answerBlank1}}
+	answers5 := Answers{[]*Answer{answerBlank2}}
 
 	tests := []struct {
 		Answers     Answers
@@ -89,6 +93,8 @@ func TestCorrectAnswer(t *testing.T) {
 		{answers1, answer4, false},
 		{answers2, answer4, true},
 		{answers3, answerTrue, false},
+		{answers4, answerBlank1, false},
+		{answers5, answerBlank2, true},
 	}
 
 	for _, test := range tests {

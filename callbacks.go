@@ -13,6 +13,36 @@ var (
 	AnswersToBoxViews = map[string]*answers.Answer{}
 )
 
+//FillInAnswer -- Callback used for the fill in the blank answers
+func FillInAnswer(g *gocui.Gui, v *gocui.View) error {
+	cQuestion, err := Questions.Current()
+	if err != nil {
+		return err
+	}
+
+	filledInAnswer := &answers.Answer{v.Buffer(), true}
+
+	a := user.Answer{
+		cQuestion,
+		filledInAnswer,
+	}
+
+	//User answers -- The plus one is so the count starts at 1
+	UserAnswers[strconv.Itoa(len(UserAnswers)+1)] = &a
+
+	//Increment the questions index!
+	Questions.Index++
+
+	//Next Screen
+	err = Init(g)
+	if err != nil {
+		return err
+	}
+
+	return nil
+
+}
+
 //SelectAnswer -- Callback used to select and answer in the ABCDLayout
 func SelectAnswer(g *gocui.Gui, v *gocui.View) error {
 	fmt.Fprintln(v, "Selected")

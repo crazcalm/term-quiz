@@ -9,16 +9,6 @@ import (
 //Init -- The Init function decides which sub Init funtion should be called
 //ABCDInint, TFInit or FBInit
 func Init(g *gocui.Gui) (err error) {
-	//TODO: Add condition to end program
-
-	/*
-		//Have we run out of user answers?
-		if CurrentUserAnswer > UserAnswers.Total() {
-			g.Close()
-			log.Println("Gave Over")
-		}
-	*/
-
 	//Have we reached the question limit?
 	if Questions.Index >= QuestionLimit-1 {
 		//Need to call End Screen

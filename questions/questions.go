@@ -136,7 +136,7 @@ func CreateQuestions(qs Questions, files ...string) (Questions, error) {
 			as.Answers = append(as.Answers, &answers.Answer{qData[1], true})
 			as.Answers = append(as.Answers, &answers.Answer{qData[2], false})
 		} else if l == 3 {
-			as.Answers = append(as.Answers, &answers.Answer{qData[1], false})
+			as.Answers = append(as.Answers, &answers.Answer{qData[1], true})
 		}
 
 		//Shuffle the answers
