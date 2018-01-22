@@ -1,6 +1,6 @@
-#Term Quiz
+# Term Quiz
 
-#####A Quiz application made for your terminal
+##### A Quiz application made for your terminal
 
 ![Image of a abcd question](https://raw.githubusercontent.com/crazcalm/term-quiz/master/img/term_quiz_abcd.png  "question3")
 
