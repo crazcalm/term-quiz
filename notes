@@ -1,9 +1,0 @@
-I just thought of a way to get rid of the global variables.
-
-If I use linked lists as my data structure for both questions
-and user answers then each node will know which node is before
-and after itself.
-
-After I finish this implementation, I will make this the next sprint.
-
-SPRINT: USE LINK LISTS DATA STRUCTURE FOR USER ANSWERS AND QUESTIONS
