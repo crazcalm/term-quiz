@@ -20,7 +20,7 @@ For example as to use term-quiz, see the [code examples](https://github.com/craz
 ### Keybindings
 #### Quiz
 - Quit: Ctrl C
-- Next Answer: TAB
+- Next Answer: Tab
 - Select Answer: Enter
 
 #### Solutions
