@@ -20,9 +20,9 @@ func NewScore(name, score, questionNumber string) *Score {
 //location -- holds the location logic
 func (s *Score) location(g *gocui.Gui) (x, y, w, h int) {
 	maxX, maxY := g.Size()
-	x = int(0.3 * float32(maxX))
+	x = int(0.35 * float32(maxX))
 	y = int(0.1 * float32(maxY))
-	w = int(0.6 * float32(maxX))
+	w = int(0.65 * float32(maxX))
 	h = int(0.2 * float32(maxY))
 	return
 }
