@@ -15,9 +15,9 @@ func init() {
 
 //Question -- the interface for a question
 type Question struct {
-	Question     string
-	Answers      answers.Answers
-	Explaination string
+	Question    string
+	Answers     answers.Answers
+	Explanation string
 }
 
 //CorrectAnswer -- returns the currect answer

@@ -3,10 +3,9 @@ package quiz
 import (
 	"github.com/jroimartin/gocui"
 	"strconv"
-	//"log"
 )
 
-//Init -- The Init function decides which sub Init funtion should be called
+//Init -- The Init function decides which sub Init function should be called
 //ABCDInint, TFInit or FBInit
 func Init(g *gocui.Gui) (err error) {
 	//Have we reached the question limit?

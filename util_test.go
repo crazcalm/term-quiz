@@ -39,7 +39,7 @@ func TestFileArgs(t *testing.T) {
 		err := FileArgs(test.Files)
 
 		if test.ExpectedError && err == nil {
-			t.Error("Was expecting an error but no error was recieved")
+			t.Error("Was expecting an error but no error was received")
 		}
 
 		if !test.ExpectedError && err != nil {
@@ -47,10 +47,10 @@ func TestFileArgs(t *testing.T) {
 		}
 
 		if test.ExpectedError && err != nil {
-			if strings.Contains(err.Error(), test.Error) {
-				return
-			} else {
+			if !strings.Contains(err.Error(), test.Error) {
 				t.Errorf("Expected error to contain %s, but the error was actually '%s'", test.Error, err.Error())
+			} else {
+				return
 			}
 		}
 	}
