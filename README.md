@@ -8,6 +8,9 @@
 
 ![Image of end screen solution](https://raw.githubusercontent.com/crazcalm/term-quiz/master/img/term_quiz_answer.png  "answer")
 
+### Installation
+	go get github.com/crazcalm/term-quiz
+
 ### Question Types Include
 - A B C D
 - True and False
