@@ -17,5 +17,14 @@
 
 For example as to use term-quiz, see the [code examples](https://github.com/crazcalm/term-quiz/tree/master/_examples) and [test csv files](https://github.com/crazcalm/term-quiz/tree/master/_examples/test_data).
 
+### Keybindings
+#### Quiz
+- Quit: Ctrl C
+- Next Answer: TAB
+- Select Answer: Enter
+
+#### Solutions
+- Next Soultion: Enter
+
 ### Issues/Bugs/Suggestions
 Feel free to report any bugs or make suggestions [here](https://github.com/crazcalm/term-quiz/issues).
