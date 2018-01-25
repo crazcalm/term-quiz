@@ -1,0 +1,13 @@
+language: go
+
+before_install:
+  - go get github.com/golang/lint/golint
+  - go get honnef.co/go/tools/cmd/staticcheck
+
+go:
+  - 1.x
+
+script:
+  - staticcheck ./...
+  - golint -set_exit_status ./...
+  - go test ./...

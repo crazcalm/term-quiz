@@ -1,5 +1,7 @@
 # Term Quiz
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/crazcalm/term-quiz)](https://goreportcard.com/report/github.com/crazcalm/term-quiz)   [![GoDoc](https://godoc.org/github.com/crazcalm/term-quiz?status.svg)](https://godoc.org/github.com/crazcalm/term-quiz)
+
 ### A Quiz application made for your terminal
 
 ![Image of a abcd question](https://raw.githubusercontent.com/crazcalm/term-quiz/master/img/term_quiz_abcd.png  "question3")
