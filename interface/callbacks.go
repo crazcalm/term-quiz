@@ -71,7 +71,7 @@ func CursorDown(g *gocui.Gui, v *gocui.View) error {
 	return nil
 }
 
-//CursorUp -- Callback used to scoll up
+//CursorUp -- Callback used to scroll up
 func CursorUp(g *gocui.Gui, v *gocui.View) error {
 	if v != nil {
 		ox, oy := v.Origin()

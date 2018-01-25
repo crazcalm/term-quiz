@@ -19,8 +19,8 @@ func main() {
 
 	questionFrame := gui.NewQuestionFrame("questionFrame")
 	question := gui.NewQuestion("question", "title - question", "question string")
-	answerTrue := gui.NewAnswer(gui.BoxTrue, gui.BoxTrue, "answer string")
-	answerFalse := gui.NewAnswer(gui.BoxFalse, gui.BoxFalse, "ppppppppppppppppppppppppppppppp")
+	answerTrue := gui.NewAnswer(gui.BoxTrue, gui.BoxTrue, "")
+	answerFalse := gui.NewAnswer(gui.BoxFalse, gui.BoxFalse, "")
 
 	g.SetManager(questionFrame, question, answerTrue, answerFalse)
 

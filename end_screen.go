@@ -55,7 +55,7 @@ func ESInit(g *gocui.Gui, u user.Answers) (err error) {
 
 	//create widgets
 	scoreWidget := gui.NewScore(gui.ScoreName, score, questionCount)
-	explainWidget := gui.NewExplaination(gui.Explain, correct, currentUserAnswer.Question.Question, correctAnswer.Answer, currentUserAnswer.Question.Explaination)
+	explainWidget := gui.NewExplanation(gui.Explain, correct, currentUserAnswer.Question.Question, correctAnswer.Answer, currentUserAnswer.Question.Explaination)
 
 	g.SetManager(scoreWidget, explainWidget)
 

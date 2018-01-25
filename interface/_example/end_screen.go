@@ -18,7 +18,7 @@ func main() {
 	g.SelFgColor = gocui.ColorGreen
 
 	score := gui.NewScore(gui.ScoreName, "11/12", "4")
-	explain := gui.NewExplaination(gui.Explain, gui.Right, "question string", "Answer string", "explaination string")
+	explain := gui.NewExplanation(gui.Explain, gui.Right, "question string", "Answer string", "explaination string")
 
 	g.SetManager(score, explain)
 

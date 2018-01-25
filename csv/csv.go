@@ -22,7 +22,7 @@ func Read(path string, records [][]string) ([][]string, error) {
 	if err != nil {
 		return records, err
 	}
-	defer file.Close()
+	defer file.Close() // nolint: errcheck
 
 	//Read the file
 	r := csv.NewReader(file)

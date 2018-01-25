@@ -17,7 +17,7 @@ const (
 	BoxBlank = "Write Your Answer"
 	//ScoreName -- name of the score box
 	ScoreName = "score"
-	//Explain -- name of the Explaination box
+	//Explain -- name of the Explanation box
 	Explain = "explain"
 	//Right -- What the user sees when they are right
 	Right = "You were RIGHT!"

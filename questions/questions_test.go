@@ -43,7 +43,7 @@ func TestCorrectAnswer(t *testing.T) {
 		}
 
 		//An error was expected.
-		//An error was recieved.
+		//An error was received.
 		//Test case passed
 		if test.ExpectError && err != nil {
 			return
@@ -87,7 +87,7 @@ func TestShuffle(t *testing.T) {
 		}
 
 		if !test.ExpectError && err != nil {
-			t.Errorf("Unexpectedly recieved this error: %s", err.Error())
+			t.Errorf("Unexpectedly received this error: %s", err.Error())
 		}
 
 		//I expected and error
