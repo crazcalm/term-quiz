@@ -14,7 +14,7 @@ func ESInit(g *gocui.Gui, u user.Answers) (err error) {
 	//End quiz when you run out of answers
 	if CurrentUserAnswer > len(UserAnswers) {
 		g.Close()
-		log.Println("Game Over")
+		fmt.Println("Game Over")
 		os.Exit(0)
 	}
 
