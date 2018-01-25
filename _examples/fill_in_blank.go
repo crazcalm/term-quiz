@@ -17,7 +17,7 @@ func main() {
 	defer g.Close()
 
 	//Need to create questions
-	quiz.Questions, err = questions.CreateQuestions(quiz.Questions, filepath.Join("test_data", "fill_in_the_blank.csv"))
+	quiz.Questions, err = questions.CreateQuestions(quiz.Questions, []string{filepath.Join("test_data", "fill_in_the_blank.csv")})
 	if err != nil {
 		log.Fatal(err)
 	}

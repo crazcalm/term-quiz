@@ -17,7 +17,7 @@ func main() {
 	g.Highlight = true
 	g.SelFgColor = gocui.ColorGreen
 
-	questionFrame := gui.NewQuestionFrame("questionFrame", "count")
+	questionFrame := gui.NewQuestionFrame("questionFrame")
 	question := gui.NewQuestion("question", "title - question", "question string")
 	answerBlank := gui.NewAnswer("answerBlank", gui.BoxBlank, "")
 

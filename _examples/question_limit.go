@@ -23,7 +23,7 @@ func main() {
 	path3 := filepath.Join("test_data", "fill_in_the_blank.csv")
 
 	//Need to create questions
-	quiz.Questions, err = questions.CreateQuestions(quiz.Questions, path1, path2, path3, path1)
+	quiz.Questions, err = questions.CreateQuestions(quiz.Questions, []string{path1, path2, path3, path1})
 	if err != nil {
 		log.Fatal(err)
 	}

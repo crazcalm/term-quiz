@@ -111,7 +111,7 @@ func NewQuestions() Questions {
 }
 
 //CreateQuestions -- used to create questions
-func CreateQuestions(qs Questions, files ...string) (Questions, error) {
+func CreateQuestions(qs Questions, files []string) (Questions, error) {
 	var data [][]string
 	var err error
 

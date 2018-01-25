@@ -336,15 +336,8 @@ func TestCreateQuestions(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		l := len(test.Files)
 		var err error
-		if l == 1 {
-			qs, err = CreateQuestions(qs, test.Files[0])
-		} else if l == 2 {
-			qs, err = CreateQuestions(qs, test.Files[0], test.Files[1])
-		} else if l == 3 {
-			qs, err = CreateQuestions(qs, test.Files[0], test.Files[1], test.Files[2])
-		}
+		qs, err = CreateQuestions(qs, test.Files)
 
 		if err != nil && !test.ExpectErr {
 			t.Errorf("Got an unexpected err: %s", err.Error())
