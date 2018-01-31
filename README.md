@@ -4,9 +4,9 @@
 
 ### A Quiz application made for your terminal
 
-![Image of a abcd question](https://raw.githubusercontent.com/crazcalm/term-quiz/master/img/term_quiz_abcd.png  "question3")
+![Image of a abcd question](https://raw.githubusercontent.com/crazcalm/term-quiz/master/img/abcd.png  "question2")
 
-![Image of end screen solution](https://raw.githubusercontent.com/crazcalm/term-quiz/master/img/term_quiz_answer.png  "answer")
+![Image of end screen solution](https://raw.githubusercontent.com/crazcalm/term-quiz/master/img/abcd_answer.png  "answer")
 
 ### Installation
 	go get github.com/crazcalm/term-quiz
@@ -21,13 +21,18 @@
 For example as to use term-quiz, see the [code examples](https://github.com/crazcalm/term-quiz/tree/master/_examples) and [test csv files](https://github.com/crazcalm/term-quiz/tree/master/_examples/test_data).
 
 ### Keybindings
-#### Quiz
-- Quit: Ctrl C
-- Next Answer: Tab
-- Select Answer: Enter
+#### Quiz Screen
+Keybinging| Action
+--|--
+Ctrl + C| Quit
+Tab| Next Answer
+Enter| Select Answer
 
-#### Solutions
-- Next Soultion: Enter
+#### Solutions Screen
+Keybinding| Action
+--|--
+Ctrl + C| Quit
+Enter| Next Solution
 
 ### Issues/Bugs/Suggestions
 Feel free to report any bugs or make suggestions [here](https://github.com/crazcalm/term-quiz/issues).
