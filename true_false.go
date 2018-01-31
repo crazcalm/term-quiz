@@ -23,8 +23,9 @@ func TFInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	AnswersToBoxViews[gui.BoxTrue] = as.Answers[0]
 	answerFalse := gui.NewAnswer(gui.BoxFalse, as.Answers[1].Answer, "")
 	AnswersToBoxViews[gui.BoxFalse] = as.Answers[1]
+	infoBar := gui.NewInfoBar(gui.InfoBarName, gui.InfoBarTrueFalse)
 
-	g.SetManager(questionFrame, question, answerTrue, answerFalse)
+	g.SetManager(questionFrame, question, answerTrue, answerFalse, infoBar)
 
 	//Add keybindings
 	if err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, gui.Quit); err != nil {

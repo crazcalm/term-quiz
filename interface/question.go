@@ -20,9 +20,9 @@ func NewQuestion(name, title string, body string) *Question {
 func (q *Question) location(g *gocui.Gui) (x, y, w, h int) {
 	maxX, maxY := g.Size()
 	x = int(0.2 * float32(maxX))
-	y = int(0.1 * float32(maxY))
+	y = int(0.05 * float32(maxY))
 	w = int(0.8 * float32(maxX))
-	h = int(0.4 * float32(maxY))
+	h = int(0.35 * float32(maxY))
 	return
 }
 

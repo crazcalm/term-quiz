@@ -19,8 +19,8 @@ func main() {
 
 	score := gui.NewScore(gui.ScoreName, "11/12", "4")
 	explain := gui.NewExplanation(gui.Explain, gui.Right, "question string", "Answer string", "explaination string")
-
-	g.SetManager(score, explain)
+	infoBar := gui.NewInfoBar(gui.InfoBarName, gui.InfoBarEndScreen)
+	g.SetManager(score, explain, infoBar)
 
 	if err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, gui.Quit); err != nil {
 		log.Panicln(err)

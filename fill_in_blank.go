@@ -20,8 +20,9 @@ func FBInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	questionFrame := gui.NewQuestionFrame("questionFrame")
 	question := gui.NewQuestion("question", count, q.Question)
 	answerBlank := gui.NewAnswer(gui.BoxBlank, gui.BoxBlank, as.Answers[0].Answer)
+	infoBar := gui.NewInfoBar(gui.InfoBarName, gui.InfoBarFillInBlank)
 
-	g.SetManager(questionFrame, question, answerBlank)
+	g.SetManager(questionFrame, question, answerBlank, infoBar)
 
 	//Add keybindings
 	if err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, gui.Quit); err != nil {

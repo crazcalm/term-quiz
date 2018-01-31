@@ -23,8 +23,9 @@ func main() {
 	answerB := gui.NewAnswer(gui.BoxB, gui.BoxB, "ppppppppppppppppppppppppppppppp")
 	answerC := gui.NewAnswer(gui.BoxC, gui.BoxC, "C-Town")
 	answerD := gui.NewAnswer(gui.BoxD, gui.BoxD, "last but not least")
+	infoBar := gui.NewInfoBar(gui.InfoBarName, gui.InfoBarABCD)
 
-	g.SetManager(questionFrame, question, answerA, answerB, answerC, answerD)
+	g.SetManager(questionFrame, question, answerA, answerB, answerC, answerD, infoBar)
 
 	if err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, gui.Quit); err != nil {
 		log.Panicln(err)

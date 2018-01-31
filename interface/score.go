@@ -27,7 +27,7 @@ func (s *Score) location(g *gocui.Gui) (x, y, w, h int) {
 	return
 }
 
-//Layout -- Tells gocui.Gui how to display this compenent
+//Layout -- Tells gocui.Gui how to display this component
 func (s *Score) Layout(g *gocui.Gui) error {
 	x, y, w, h := s.location(g)
 	v, err := g.SetView(s.name, x, y, w, h)

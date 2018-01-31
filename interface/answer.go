@@ -23,48 +23,48 @@ func (a *Answer) location(title string, g *gocui.Gui) (x, y, w, h int) {
 	maxX, maxY := g.Size()
 	if strings.EqualFold(title, BoxA) {
 		x = -1
-		y = int(0.5 * float32(maxY))
+		y = int(0.4 * float32(maxY))
 		w = int(0.5 * float32(maxX))
-		h = int(0.73 * float32(maxY))
+		h = int(0.63 * float32(maxY))
 		return
 
 	} else if strings.EqualFold(title, BoxB) {
 		x = int(0.5 * float32(maxX))
-		y = int(0.5 * float32(maxY))
+		y = int(0.4 * float32(maxY))
 		w = maxX
-		h = int(0.73 * float32(maxY))
+		h = int(0.63 * float32(maxY))
 		return
 
 	} else if strings.EqualFold(title, BoxC) {
 		x = -1
-		y = int(0.77 * float32(maxY))
+		y = int(0.67 * float32(maxY))
 		w = int(0.5 * float32(maxX))
-		h = maxY
+		h = int(0.87 * float32(maxY))
 		return
 	} else if strings.EqualFold(title, BoxD) {
 		x = int(0.5 * float32(maxX))
-		y = int(0.77 * float32(maxY))
+		y = int(0.67 * float32(maxY))
 		w = maxX
-		h = maxY
+		h = int(0.87 * float32(maxY))
 		return
 	} else if strings.EqualFold(title, BoxTrue) {
 		x = int(0.05 * float32(maxX))
-		y = int(0.6 * float32(maxY))
+		y = int(0.5 * float32(maxY))
 		w = int(0.45 * float32(maxX))
-		h = int(0.9 * float32(maxY))
+		h = int(0.8 * float32(maxY))
 		return
 
 	} else if strings.EqualFold(title, BoxFalse) {
 		x = int(0.55 * float32(maxX))
-		y = int(0.6 * float32(maxY))
+		y = int(0.5 * float32(maxY))
 		w = int(0.95 * float32(maxX))
-		h = int(0.9 * float32(maxY))
+		h = int(0.8 * float32(maxY))
 		return
 	} else if strings.EqualFold(title, BoxBlank) {
 		x = int(0.05 * float32(maxX))
-		y = int(0.6 * float32(maxY))
+		y = int(0.5 * float32(maxY))
 		w = int(0.95 * float32(maxX))
-		h = int(0.9 * float32(maxY))
+		h = int(0.8 * float32(maxY))
 	}
 
 	return

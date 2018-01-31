@@ -56,8 +56,9 @@ func ESInit(g *gocui.Gui, u user.Answers) (err error) {
 	//create widgets
 	scoreWidget := gui.NewScore(gui.ScoreName, score, questionCount)
 	explainWidget := gui.NewExplanation(gui.Explain, correct, currentUserAnswer.Question.Question, correctAnswer.Answer, currentUserAnswer.Question.Explanation)
+	infoBar := gui.NewInfoBar(gui.InfoBarName, gui.InfoBarEndScreen)
 
-	g.SetManager(scoreWidget, explainWidget)
+	g.SetManager(scoreWidget, explainWidget, infoBar)
 
 	//Keybindings
 	if err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, gui.Quit); err != nil {

@@ -25,7 +25,7 @@ func (e *Explanation) location(g *gocui.Gui) (x, y, w, h int) {
 	x = int(0.1 * float32(maxX))
 	y = int(0.3 * float32(maxY))
 	w = int(0.9 * float32(maxX))
-	h = int(0.9 * float32(maxY))
+	h = int(0.8 * float32(maxY))
 	return
 }
 

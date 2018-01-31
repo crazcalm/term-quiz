@@ -20,8 +20,9 @@ func main() {
 	questionFrame := gui.NewQuestionFrame("questionFrame")
 	question := gui.NewQuestion("question", "title - question", "question string")
 	answerBlank := gui.NewAnswer("answerBlank", gui.BoxBlank, "")
+	infoBar := gui.NewInfoBar(gui.InfoBarName, gui.InfoBarFillInBlank)
 
-	g.SetManager(questionFrame, question, answerBlank)
+	g.SetManager(questionFrame, question, answerBlank, infoBar)
 
 	if err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, gui.Quit); err != nil {
 		log.Panicln(err)

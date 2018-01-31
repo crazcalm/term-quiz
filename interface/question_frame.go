@@ -17,7 +17,7 @@ func NewQuestionFrame(name string) *QuestionFrame {
 //Layout -- Tells gocui.Gui how to display this compenent
 func (qf *QuestionFrame) Layout(g *gocui.Gui) error {
 	maxX, maxY := g.Size()
-	_, err := g.SetView(qf.name, -1, -1, maxX, int(0.5*float32(maxY)))
+	_, err := g.SetView(qf.name, -1, -1, maxX, int(0.4*float32(maxY)))
 	if err != nil {
 		if err != gocui.ErrUnknownView {
 			return err

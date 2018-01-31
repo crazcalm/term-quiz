@@ -23,4 +23,14 @@ const (
 	Right = "You were RIGHT!"
 	//Wrong -- what the user sees when they are wrong
 	Wrong = "You were WRONG!"
+	//InfoBarName -- Name of informantion bar
+	InfoBarName = "infoBar"
+	//InfoBarABCD -- InfoBar content for ABCD quiz screen
+	InfoBarABCD = "Term Quiz -- Tab: switch answer   Enter: select answer   Ctrl + C: Quit"
+	//InfoBarTrueFalse -- InfoBar content for True False quiz screen
+	InfoBarTrueFalse = "Term Quiz -- Tab: switch answer   Enter: select answer   Ctrl + C: Quit"
+	//InfoBarFillInBlank -- InfoBar content for Fill in the Blank quiz screen
+	InfoBarFillInBlank = "Term Quiz -- Enter: submit answer   Ctrl + C: Quit"
+	//InfoBarEndScreen -- InfoBar content for the end screen
+	InfoBarEndScreen = "Term Quiz -- Enter: view next answer   Ctrl + C: Quit"
 )

@@ -38,8 +38,9 @@ func ABCDInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	AnswersToBoxViews[gui.BoxC] = as.Answers[2]
 	answerD := gui.NewAnswer(gui.BoxD, gui.BoxD, as.Answers[3].Answer)
 	AnswersToBoxViews[gui.BoxD] = as.Answers[3]
+	infoBar := gui.NewInfoBar(gui.InfoBarName, gui.InfoBarABCD)
 
-	g.SetManager(questionFrame, question, answerA, answerB, answerC, answerD)
+	g.SetManager(questionFrame, question, answerA, answerB, answerC, answerD, infoBar)
 
 	//Add keybindings
 	if err := g.SetKeybinding("", gocui.KeyCtrlC, gocui.ModNone, gui.Quit); err != nil {
