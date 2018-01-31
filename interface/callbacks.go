@@ -6,7 +6,8 @@ import (
 )
 
 var (
-	activeView = 0
+	//ActiveView -- Index counter used when tabbing through answers
+	ActiveView = 0
 	//ABCDBoxes -- slice of the A, B, C, and D answer box names
 	ABCDBoxes = []string{BoxA, BoxB, BoxC, BoxD}
 	//TFBoxes -- slice of the True and False answer box names
@@ -30,7 +31,7 @@ func setCurrentViewOnTop(g *gocui.Gui, name string) (*gocui.View, error) {
 
 //ABCDNextView -- Callback used to interate through the A, B, C, D choices
 func ABCDNextView(g *gocui.Gui, v *gocui.View) error {
-	nextIndex := (activeView + 1) % len(ABCDBoxes)
+	nextIndex := (ActiveView + 1) % len(ABCDBoxes)
 	name := ABCDBoxes[nextIndex]
 
 	_, err := setCurrentViewOnTop(g, name)
@@ -38,13 +39,13 @@ func ABCDNextView(g *gocui.Gui, v *gocui.View) error {
 		log.Panicln(err)
 	}
 
-	activeView = nextIndex
+	ActiveView = nextIndex
 	return nil
 }
 
 //TFNextView -- Callback used to interate through the True and False choices
 func TFNextView(g *gocui.Gui, v *gocui.View) error {
-	nextIndex := (activeView + 1) % len(TFBoxes)
+	nextIndex := (ActiveView + 1) % len(TFBoxes)
 	name := TFBoxes[nextIndex]
 
 	_, err := setCurrentViewOnTop(g, name)
@@ -52,7 +53,7 @@ func TFNextView(g *gocui.Gui, v *gocui.View) error {
 		log.Panicln(err)
 	}
 
-	activeView = nextIndex
+	ActiveView = nextIndex
 	return nil
 }
 
@@ -83,58 +84,5 @@ func CursorUp(g *gocui.Gui, v *gocui.View) error {
 		}
 	}
 	return nil
-}
-
-func writeInfoToLayout(g *gocui.Gui, q Question) {
-	//Write question
-	questionBox := getQuestionBoxView(g)
-	questionBox.Clear()
-	questionBox.Title = fmt.Sprintf("Question %d", QuestionCount+1)
-	fmt.Fprintln(questionBox, q.Question)
-
-	//Write answers
-	answerBoxViews := getAnswerBoxViews(g)
-	for i, answer := range q.Answers {
-		answerBoxViews[i].Clear()
-
-		//Adding it to the map
-		answersToBoxViews[answerBoxViews[i].Name()] = answer
-
-		//Write the answer to the layout
-		fmt.Fprintln(answerBoxViews[i], answer.Answer)
-	}
-
-}
-
-func getQuestionBoxView(g *gocui.Gui) *gocui.View {
-	var result *gocui.View
-	views := g.Views()
-	for _, view := range views {
-		if strings.EqualFold(QuestionBox, view.Name()) {
-			result = view
-		}
-	}
-	return result
-}
-
-func getAnswerBoxViews(g *gocui.Gui) []*gocui.View {
-	var questionViews []*gocui.View
-	views := g.Views()
-	for _, view := range views {
-		if isViewInSlice(BoxesView, view) {
-			questionViews = append(questionViews, view)
-		}
-	}
-	return questionViews
-}
-
-func isViewInSlice(viewNames []string, v *gocui.View) bool {
-	result := false
-	for _, name := range viewNames {
-		if strings.EqualFold(name, v.Name()) {
-			result = true
-		}
-	}
-	return result
 }
 */

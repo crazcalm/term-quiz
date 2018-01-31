@@ -1,8 +1,8 @@
 package quiz
 
 import (
-	"fmt"
 	"github.com/crazcalm/term-quiz/answers"
+	"github.com/crazcalm/term-quiz/interface"
 	"github.com/crazcalm/term-quiz/user"
 	"github.com/jroimartin/gocui"
 	"strconv"
@@ -45,7 +45,8 @@ func FillInAnswer(g *gocui.Gui, v *gocui.View) error {
 
 //SelectAnswer -- Callback used to select and answer in the ABCDLayout
 func SelectAnswer(g *gocui.Gui, v *gocui.View) error {
-	fmt.Fprintln(v, "Selected")
+	//Reset variable used for tabbing through solutions
+	gui.ActiveView = 0
 
 	cQuestion, err := Questions.Current()
 	if err != nil {
