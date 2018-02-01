@@ -7,7 +7,7 @@ import (
 	"log"
 )
 
-//FBInit -- Initializes the ABCD gui interface
+//FBInit -- Initializes the Fill in the Blank gui interface
 func FBInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	//The Answers
 	as := q.Answers

@@ -7,7 +7,7 @@ import (
 	"log"
 )
 
-//TFInit -- Initializes the ABCD gui interface
+//TFInit -- Initializes the True and False gui interface
 func TFInit(g *gocui.Gui, q *questions.Question, count string) (err error) {
 	//The Answers
 	as := q.Answers
