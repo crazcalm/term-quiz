@@ -18,7 +18,7 @@
 
 ### Usage
 
-For example as to use term-quiz, see the [code examples](https://github.com/crazcalm/term-quiz/tree/master/_examples) and [test csv files](https://github.com/crazcalm/term-quiz/tree/master/_examples/test_data).
+See the [code examples](https://github.com/crazcalm/term-quiz/tree/master/_examples) and [test csv files](https://github.com/crazcalm/term-quiz/tree/master/_examples/test_data).
 
 ### Keybindings
 #### Quiz Screen
