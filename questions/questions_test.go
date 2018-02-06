@@ -46,7 +46,7 @@ func TestCorrectAnswer(t *testing.T) {
 		//An error was received.
 		//Test case passed
 		if test.ExpectError && err != nil {
-			return
+			continue
 		}
 
 		if !strings.EqualFold(test.Expected.Answer, result.Answer) {
@@ -94,7 +94,7 @@ func TestShuffle(t *testing.T) {
 		//I got an error
 		//Test case passed
 		if !test.ExpectError && err != nil {
-			return
+			continue
 		}
 
 		shuffled := false
@@ -177,7 +177,7 @@ func TestNext(t *testing.T) {
 		//I got an error
 		//Test case passed
 		if test.ExpectError && err != nil {
-			return
+			continue
 		}
 
 		if !strings.EqualFold(test.Expected.Question, result.Question) {
@@ -252,7 +252,7 @@ func TestPrevious(t *testing.T) {
 		//I got an error
 		//Test case passed
 		if test.ExpectError && err != nil {
-			return
+			continue
 		}
 
 		if !strings.EqualFold(test.Expected.Question, result.Question) {
@@ -299,7 +299,7 @@ func TestCurrent(t *testing.T) {
 		//I got and error
 		//Test case passed
 		if err != nil && test.ExpectErr {
-			return
+			continue
 		}
 
 		if !strings.EqualFold(test.Expected.Question, result.Question) {
@@ -317,8 +317,6 @@ func TestNewQuestions(t *testing.T) {
 }
 
 func TestCreateQuestions(t *testing.T) {
-	qs := NewQuestions()
-
 	abcdPath := filepath.Join("test_data", "abcd.csv")
 	trueFalsePath := filepath.Join("test_data", "true_false.csv")
 	fillInBlankPath := filepath.Join("test_data", "fill_in_the_blank.csv")
@@ -337,6 +335,7 @@ func TestCreateQuestions(t *testing.T) {
 
 	for _, test := range tests {
 		var err error
+		qs := NewQuestions()
 		qs, err = CreateQuestions(qs, test.Files)
 
 		if err != nil && !test.ExpectErr {
@@ -351,7 +350,7 @@ func TestCreateQuestions(t *testing.T) {
 		//I got an error
 		//This test case is done
 		if err != nil && test.ExpectErr {
-			return
+			continue
 		}
 
 		if len(qs.Questions) != test.Len {
