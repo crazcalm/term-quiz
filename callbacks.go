@@ -43,7 +43,7 @@ func FillInAnswer(g *gocui.Gui, v *gocui.View) error {
 
 }
 
-//SelectAnswer -- Callback used to select an answer in quiz layouts that have 
+//SelectAnswer -- Callback used to select an answer in quiz layouts that have
 //multiple answers to select from
 func SelectAnswer(g *gocui.Gui, v *gocui.View) error {
 	//Reset variable used for tabbing through solutions

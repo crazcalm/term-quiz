@@ -18,7 +18,8 @@ func TestFileArgs(t *testing.T) {
 	emptyString := ""
 
 	error1 := "No files were passed in"
-	error2 := "is not a file"
+	error2 := "empty string cannot be used as a file"
+	error3 := "test_data/notAFile does not exist"
 
 	tests := []struct {
 		Files         []string
@@ -27,12 +28,12 @@ func TestFileArgs(t *testing.T) {
 	}{
 		{[]string{}, true, error1},
 		{[]string{emptyString}, true, error2},
-		{[]string{notAFile}, true, error2},
+		{[]string{notAFile}, true, error3},
 		{[]string{file1}, false, ""},
 		{[]string{file1, file2}, false, ""},
 		{[]string{file1, file2, file3}, false, ""},
 		{[]string{file1, emptyString, file2}, true, error2},
-		{[]string{file1, notAFile, file2}, true, error2},
+		{[]string{file1, notAFile, file2}, true, error3},
 	}
 
 	for _, test := range tests {
@@ -50,7 +51,7 @@ func TestFileArgs(t *testing.T) {
 			if !strings.Contains(err.Error(), test.Error) {
 				t.Errorf("Expected error to contain %s, but the error was actually '%s'", test.Error, err.Error())
 			} else {
-				return
+				continue
 			}
 		}
 	}
