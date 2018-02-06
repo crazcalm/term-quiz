@@ -71,6 +71,7 @@ func TestShuffle(t *testing.T) {
 		ExpectError bool
 	}{
 		{Questions{[]*Question{q1, q2, q3, q4}, 0}, false},
+		{Questions{[]*Question{q1}, 0}, true},
 	}
 
 	for _, test := range tests {
@@ -281,7 +282,7 @@ func TestCurrent(t *testing.T) {
 		{Questions{[]*Question{q1, q2, q3, q4}, 1}, q2, false},
 		{Questions{[]*Question{q1, q2, q3, q4}, 2}, q3, false},
 		{Questions{[]*Question{q1, q2, q3, q4}, 3}, q4, false},
-		//{Questions{[]*Question{}}, q1, true}, //Having trouble testing this case
+		{Questions{[]*Question{}, 0}, q1, true}, //Having trouble testing this case
 	}
 
 	for _, test := range tests {
