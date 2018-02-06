@@ -42,18 +42,18 @@ func TestShuffle(t *testing.T) {
 
 			if test.ExpectError && err == nil {
 				t.Errorf("Shuffle expected an error, but received no error")
-				return
+				continue
 			}
 
 			if !test.ExpectError && err != nil {
 				t.Errorf("Shuffle received an expected error: %s", err.Error())
-				return
+				continue
 			}
 
 			//These cases that do not shuffle have already passed.
 			//They will stop here.
 			if test.ExpectError && err != nil {
-				return
+				continue
 			}
 
 			if !strings.EqualFold(firstAnswer, test.Answers.Answers[0].Answer) {
@@ -61,7 +61,7 @@ func TestShuffle(t *testing.T) {
 			}
 		}
 
-		if !shuffled {
+		if !shuffled && len(test.Answers.Answers) > 1 {
 			t.Errorf("The answers were not shuffled")
 		}
 
