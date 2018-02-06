@@ -1,6 +1,6 @@
 # Term Quiz
 
-[![Build Status](https://api.travis-ci.org/crazcalm/term-quiz.svg?branch=master)](https://travis-ci.org/crazcalm/term-quiz)    [![Go Report Card](https://goreportcard.com/badge/github.com/crazcalm/term-quiz)](https://goreportcard.com/report/github.com/crazcalm/term-quiz)    [![GoDoc](https://godoc.org/github.com/crazcalm/term-quiz?status.svg)](https://godoc.org/github.com/crazcalm/term-quiz)
+[![Build Status](https://api.travis-ci.org/crazcalm/term-quiz.svg?branch=master)](https://travis-ci.org/crazcalm/term-quiz)    [![Go Report Card](https://goreportcard.com/badge/github.com/crazcalm/term-quiz)](https://goreportcard.com/report/github.com/crazcalm/term-quiz)    [![GoDoc](https://godoc.org/github.com/crazcalm/term-quiz?status.svg)](https://godoc.org/github.com/crazcalm/term-quiz)    [![Coverage Status](https://coveralls.io/repos/github/crazcalm/term-quiz/badge.svg?branch=master)](https://coveralls.io/github/crazcalm/term-quiz?branch=master)
 
 ### A Quiz application made for your terminal
 
