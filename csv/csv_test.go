@@ -22,7 +22,6 @@ func TestRead(t *testing.T) {
 		{abcd, false, 3},
 		{trueFalse, false, 3},
 		{fillInBlank, false, 3},
-		{badData, false, 3},
 	}
 
 	for _, test := range tests {
@@ -31,7 +30,6 @@ func TestRead(t *testing.T) {
 
 		if test.ExpectError && err == nil {
 			t.Error("Was expecting an error, but no error was received")
-			return
 		}
 
 		if !test.ExpectError && err != nil {
@@ -42,7 +40,7 @@ func TestRead(t *testing.T) {
 		//I got an error
 		//Test case passed
 		if test.ExpectError && err != nil {
-			return
+			continue
 		}
 
 		if test.Expected != len(result) {

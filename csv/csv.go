@@ -4,7 +4,6 @@ import (
 	"encoding/csv"
 	"fmt"
 	"io"
-	"log"
 	"os"
 )
 
@@ -36,7 +35,7 @@ func Read(path string, records [][]string) ([][]string, error) {
 			break
 		}
 		if err != nil {
-			log.Fatal(err)
+			return records, fmt.Errorf("Err while reading file %s: %s", file.Name(), err.Error())
 		}
 		if count != 0 {
 			records = append(records, record)
