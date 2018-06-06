@@ -2,9 +2,12 @@ package gui
 
 import (
 	"fmt"
-	"github.com/jroimartin/gocui"
 	"log"
 	"strings"
+
+	"github.com/crazcalm/text-to-width"
+
+	"github.com/jroimartin/gocui"
 )
 
 //Answer -- Gui component that holds a Answer
@@ -79,13 +82,17 @@ func (a *Answer) Layout(g *gocui.Gui) error {
 			return err
 		}
 		v.Title = a.title
-		v.Wrap = true
+
+		//Set to false because text-to-width will do the wrapping
+		v.Wrap = false
 
 		//Make sure the fill in the blank is editable
 		if strings.EqualFold(a.title, BoxBlank) {
 			v.Editable = true
 		} else {
-			fmt.Fprint(v, a.body)
+			//The allowed amount of space the text can take
+			length := w - x - 1
+			fmt.Fprint(v, texttowidth.Format(a.body, length))
 		}
 
 		//Make sure the first answer is on top

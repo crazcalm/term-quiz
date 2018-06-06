@@ -2,6 +2,9 @@ package gui
 
 import (
 	"fmt"
+
+	"github.com/crazcalm/text-to-width"
+
 	"github.com/jroimartin/gocui"
 )
 
@@ -37,19 +40,23 @@ func (e *Explanation) Layout(g *gocui.Gui) error {
 		if err != gocui.ErrUnknownView {
 			return err
 		}
-		v.Wrap = true
+		//Set to false because I am using text-to-width for word wraping
+		v.Wrap = false
 
 		//result as title -- you were right or wrong
 		v.Title = e.result
 
+		//The allowed length that the text can take
+		length := w - x - 1 //The 1 seems to be needed to keep the text within the bounds of the box
+
 		//Display question
-		fmt.Fprint(v, fmt.Sprintf("(Question) -- %s\n\n", e.question))
+		fmt.Fprint(v, texttowidth.Format(fmt.Sprintf("(Question) -- %s\n\n", e.question), length))
 
 		//Display answer
-		fmt.Fprint(v, fmt.Sprintf("(Answer) -- %s\n\n", e.answer))
+		fmt.Fprint(v, texttowidth.Format(fmt.Sprintf("(Answer) -- %s\n\n", e.answer), length))
 
 		//Display explanation
-		fmt.Fprint(v, fmt.Sprintf("(Explanation) -- %s", e.explain))
+		fmt.Fprint(v, texttowidth.Format(fmt.Sprintf("(Explanation) -- %s", e.explain), length))
 	}
 	return nil
 }

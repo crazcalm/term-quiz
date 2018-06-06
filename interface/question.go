@@ -2,6 +2,9 @@ package gui
 
 import (
 	"fmt"
+
+	"github.com/crazcalm/text-to-width"
+
 	"github.com/jroimartin/gocui"
 )
 
@@ -34,9 +37,14 @@ func (q *Question) Layout(g *gocui.Gui) error {
 		if err != gocui.ErrUnknownView {
 			return err
 		}
-		v.Wrap = true
+		//Set to false because text-to-width will word wrap for us
+		v.Wrap = false
+
 		v.Title = q.title
-		fmt.Fprint(v, q.body)
+
+		//The allowed amount of space that the text can take
+		length := w - x - 1
+		fmt.Fprint(v, texttowidth.Format(q.body, length))
 	}
 	return nil
 }

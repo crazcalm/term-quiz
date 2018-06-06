@@ -40,7 +40,7 @@ func (qs Questions) Shuffle() error {
 	numOfQuestions := len(qs.Questions)
 
 	if len(qs.Questions) < 2 {
-		return fmt.Errorf("There are not enough question to be shuffled")
+		return fmt.Errorf("There are not enough questions to be shuffled")
 	}
 
 	for i := range qs.Questions {
