@@ -4,6 +4,7 @@ before_install:
   - go get github.com/golang/lint/golint
   - go get honnef.co/go/tools/cmd/staticcheck
   - go get github.com/mattn/goveralls
+  - go get github.com/go-playground/overalls
 
 go:
   - 1.x
@@ -12,4 +13,5 @@ script:
   - staticcheck ./...
   - golint -set_exit_status ./...
   - go test ./...
-  - $GOPATH/bin/goveralls -service=travis-ci
+  - overalls -project=github.com/crazcalm/term-quiz -covermode=count -debug
+  - $GOPATH/bin/goveralls  -coverprofile=overalls.coverprofile -service=travis-ci
